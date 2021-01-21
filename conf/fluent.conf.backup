@@ -1,0 +1,22 @@
+<source>
+  @type kafka_group
+  brokers kafka1:19092
+  consumer_group new_group
+  topics user-timeline
+  format json
+  add_prefix app
+  get_kafka_client_log false
+</source>
+
+<match app*>
+  @type copy
+  <store>
+  @type elasticsearch
+  host 192.168.1.42
+  port 9200
+  logstash_format true
+  logstash_prefix kafeidou
+  logstash_dateformat %Y.%m.%d 
+  flush_interval 10s
+  </store>
+</match>

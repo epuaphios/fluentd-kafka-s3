@@ -1,0 +1,27 @@
+{"id": 5,"first_name": "test5","last_name": "Lindt","email": "jlindt@gmail.com","gender": "Male","ip_address": "1.2.3.4"}
+{"id": 4,"first_name": "test4","last_name": "Lindt","email": "jlindt@gmail.com","gender": "Male","ip_address": "1.2.3.4"}
+{"id": 3,"first_name": "test3","last_name": "Lindt","email": "jlindt@gmail.com","gender": "Male","ip_address": "1.2.3.4"}
+{"id": 2,"first_name": "test2","last_name": "Lindt","email": "jlindt@gmail.com","gender": "Male","ip_address": "1.2.3.4"}
+{"id": 1,"first_name": "test1","last_name": "Lindt","email": "jlindt@gmail.com","gender": "Male","ip_address": "1.2.3.4"}
+
+kafka-console-producer --broker-list localhost:9092 --topic user-timeline < samplerecords.json
+
+
+apt update
+apt install git
+gem specific_install https://github.com/adiazgalache/fluent-plugin-cassandra-driver.git
+apt install make gcc
+schema '{:id => {:id => :integer}, :first_name => {:first_name => :string}, :last_name => {:last_name => :string}, :email => {:email => :string}, :gender => {:gender => :string}, :ip_address => {:ip_address => :string}}'
+
+
+CREATE TABLE IF NOT EXISTS test.deneme (
+    ts timestamp,
+    id int,
+    first_name text,
+    last_name text,
+    email text,
+    gender text,
+    ip_adress text,
+    json text,
+PRIMARY KEY ((id,first_name),ts)
+) WITH CLUSTERING ORDER BY (ts DESC);
